@@ -13,10 +13,11 @@ CREATE TABLE books (
     author_id INT NOT NULL REFERENCES authors(id) ON DELETE CASCADE
 );
 
-INSERT INTO authors (id, name) VALUES (1, 'Stephen King');
-INSERT INTO authors (id, name) VALUES (2, 'Agatha Christie');
-INSERT INTO authors (id, name) VALUES (3, 'J.R.R. Tolkien');
+INSERT INTO authors (name) VALUES ('Stephen King');
+INSERT INTO authors (name) VALUES ('Agatha Christie');
+INSERT INTO authors (name) VALUES ('J.R.R. Tolkien');
 
-INSERT INTO books (id, title, genre, author_id) VALUES (1, 'IT', 'Horror', 1);
-INSERT INTO books (id, title, genre, author_id) VALUES (2, 'Hercules Poirot', 'Mystery', 2);
-INSERT INTO books (id, title, genre, author_id) VALUES (3, 'The Hobbit', 'Fantasy', 3);
+INSERT INTO books (title, genre, author_id) VALUES ('IT', 'Horror', 1);
+INSERT INTO books (title, genre, author_id) VALUES ('Hercules Poirot', 'Mystery', 2);
+INSERT INTO books (title, genre, author_id) VALUES ('The Hobbit', 'Fantasy', 3);
+
