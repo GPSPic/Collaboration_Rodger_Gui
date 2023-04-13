@@ -4,6 +4,8 @@
   margin: auto;
   width: fit-content;
   padding: 2%;
+  display: flex;
+  flex-direction: column;
 }
 
 ul{
@@ -22,4 +24,5 @@ li{
   padding: 3%;
   background-color: rgb(151, 181, 226);
   text-decoration: none;
+  align-self: center;
 }

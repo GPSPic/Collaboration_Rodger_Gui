@@ -9,7 +9,7 @@ from flask import Blueprint
 books_blueprint = Blueprint("book", __name__)
 
 # why you no work with '/books'?
-@books_blueprint.route('/books/')
+@books_blueprint.route('/books')
 def books():
     books = book_repository.select_all()
     return render_template("books/index.html", all_books=books)
@@ -22,14 +22,14 @@ def show_one_book(id):
 @books_blueprint.route('/books/<id>/delete', methods=['POST'])
 def delete(id):
     book_repository.delete(id)
-    return redirect('/books/')
+    return redirect('/books')
 
 @books_blueprint.route('/books/new')
 def add_new_page():
     # authors = author_repository.select_all() not needed in this case
     return render_template('/books/new.html')
 
-@books_blueprint.route('/books/', methods=['POST'])
+@books_blueprint.route('/books', methods=['POST'])
 def add_new_book():
     title = request.form['title']
     genre = request.form['genre']
@@ -37,4 +37,4 @@ def add_new_book():
     author_repository.save(author)
     book = Book(title, genre, author)
     book_repository.save(book)
-    return redirect('/books/')
+    return redirect('/books')
