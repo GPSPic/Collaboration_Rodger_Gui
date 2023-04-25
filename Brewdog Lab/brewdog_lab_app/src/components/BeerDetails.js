@@ -1,12 +1,19 @@
-const BeerDetails = ({beer}) => {
+const BeerDetails = ({selectedBeer, onBeerToggleFavourite}) => {
 
-    if (beer == null) {
-        return <p>Loading...</p>
+    if (selectedBeer == null) {
+        return <p>Click any beer for more details!</p>
     }
+
+    const handleChangeFav = function () {
+        onBeerToggleFavourite(selectedBeer)
+    };
 
     return ( 
         <>
-            <p>You are seeing the details about {beer.name}</p>
+            <p>You are seeing the details about {selectedBeer.name}</p>
+            <label htmlFor="favourite">This is my poison!</label>
+            <input type="checkbox" id="favourite" name={selectedBeer.name}  onChange={handleChangeFav} />
+            {/* <button onCxlick={handleChangeFav} >This is my poison!</button> */}
         </>
      );
 }

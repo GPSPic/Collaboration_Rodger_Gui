@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Let's get wasted</h1>
+      <h1>Let's get wasted, Inc</h1>
       <BeerBox url={url}/>
     </div>
   );
