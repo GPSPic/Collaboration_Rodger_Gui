@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
 
-    Calculator calculator;
+    private Calculator calculator;
 
     int num1;
     int num2;

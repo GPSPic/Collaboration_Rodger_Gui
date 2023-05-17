@@ -10,7 +10,7 @@ const SightingsForm = ({addSighting}) => {
     })
 
     const onChange = (e) =>{
-        const newFormData = Object.assign({}, formData);
+        const newFormData = Object.assign({}, formData); // === {...formData}
         newFormData[e.target.name] = e.target.value;
         setFormData(newFormData);
     }
