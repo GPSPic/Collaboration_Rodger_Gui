@@ -2,8 +2,11 @@ import crew.CabinCrewMember;
 import crew.Pilot;
 import crew.Rank;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 public class FlightTest {
 
@@ -25,9 +28,38 @@ public class FlightTest {
         learjet = new Plane(PlaneType.LEARJET);
         flightAttendant1 = new CabinCrewMember("Geri", Rank.FLIGHT_ATTENDANT);
         pilot = new Pilot("Gui", Rank.PILOT, "NNN");
-        ArrayList<Passenger> passengers = new ArrayList<>();
-        ArrayList<CabinCrewMember> cabinCrewMembers = new ArrayList<>(flightAttendant1, pilot);
-        
+//        ArrayList<Passenger> passengers = new ArrayList<>();
+//        ArrayList<CabinCrewMember> cabinCrewMembers = new ArrayList<>();
+//        cabinCrewMembers.add(flightAttendant1);
+//        cabinCrewMembers.add(pilot);
+        flight1 = new Flight(pilot,
+                learjet,
+                "FR42",
+                "EDI",
+                "CDG",
+                "12:00");
     }
 
+    @Test
+    public void canGetPassengerCount() {
+        assertEquals(0, flight1.getPassengersCount());
+    }
+
+    @Test
+    public void canGetAvailableSeats() {
+        assertEquals(2, flight1.getAvailableSeats());
+    }
+
+    @Test
+    public void canBookPassenger() {
+        flight1.bookPassenger(passenger1);
+        assertEquals(1, flight1.getPassengersCount());
+    }
+
+    @Test
+    public void cannotBookPassenger() {
+        flight1.bookPassenger(passenger1);
+        flight1.bookPassenger(passenger1);
+        flight1.bookPassenger(passenger1);
+    }
 }

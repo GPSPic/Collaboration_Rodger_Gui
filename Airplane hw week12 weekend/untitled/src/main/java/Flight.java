@@ -87,5 +87,19 @@ public class Flight {
         return passengers;
     }
 
+    public int getPassengersCount() {
+        return this.passengers.size();
+    }
 
+    public int getAvailableSeats() {
+        int flightCapacity = this.getPlane().getType().getCapacity();
+        int availableSeats = flightCapacity - this.getPassengersCount();
+        return availableSeats;
+    }
+
+    public void bookPassenger(Passenger passenger) {
+        if (this.getAvailableSeats() > 0) {
+            this.passengers.add(passenger);
+        }
+    }
 }
