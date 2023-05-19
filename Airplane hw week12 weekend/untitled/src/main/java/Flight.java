@@ -2,6 +2,7 @@ import crew.CabinCrewMember;
 import crew.Pilot;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Flight {
 
@@ -12,18 +13,18 @@ public class Flight {
     private String flightNumber;
     private String destination;
     private String departAirport;
-    private String departureTime;
+    private Calendar departureTime;
 
     public Flight(Pilot pilot,
                   Plane plane,
                   String flightNumber,
                   String destination,
                   String departAirport,
-                  String departureTime){
+                  Calendar departureTime){
 
         this.pilot =  pilot;
         this.plane = plane;
-        this.flightNumber =flightNumber;
+        this.flightNumber = flightNumber;
         this.destination = destination;
         this.departAirport = departAirport;
         this.departureTime = departureTime;
@@ -71,11 +72,11 @@ public class Flight {
         this.departAirport = departAirport;
     }
 
-    public String getDepartureTime() {
+    public Calendar getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(String departureTime) {
+    public void setDepartureTime(Calendar departureTime) {
         this.departureTime = departureTime;
     }
 

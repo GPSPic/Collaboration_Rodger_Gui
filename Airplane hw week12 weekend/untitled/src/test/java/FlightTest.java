@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,6 +20,7 @@ public class FlightTest {
     CabinCrewMember flightAttendant2;
     CabinCrewMember firstOfficer;
     Pilot pilot;
+    Calendar departureTime;
 
     @Before
     public void setUp(){
@@ -32,12 +34,18 @@ public class FlightTest {
 //        ArrayList<CabinCrewMember> cabinCrewMembers = new ArrayList<>();
 //        cabinCrewMembers.add(flightAttendant1);
 //        cabinCrewMembers.add(pilot);
+        departureTime = Calendar.getInstance();
+        departureTime.set(Calendar.YEAR, 2023);
+        departureTime.set(Calendar.MONTH, Calendar.MAY);
+        departureTime.set(Calendar.DAY_OF_MONTH, 19);
+        departureTime.set(Calendar.HOUR_OF_DAY, 9);
+        departureTime.set(Calendar.MINUTE, 30);
         flight1 = new Flight(pilot,
                 learjet,
                 "FR42",
                 "EDI",
                 "CDG",
-                "12:00");
+                departureTime);
     }
 
     @Test
