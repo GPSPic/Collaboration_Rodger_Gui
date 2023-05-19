@@ -4,12 +4,11 @@ import crew.Rank;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.Assert.assertEquals;
 
-public class FlightTest {
+public class FlightManagerTest {
 
+    FlightManager flightManager;
     Flight flight1;
     Passenger passenger1;
     Passenger passenger2;
@@ -19,6 +18,7 @@ public class FlightTest {
     CabinCrewMember flightAttendant2;
     CabinCrewMember firstOfficer;
     Pilot pilot;
+
 
     @Before
     public void setUp(){
@@ -38,37 +38,14 @@ public class FlightTest {
                 "EDI",
                 "CDG",
                 "12:00");
+        flightManager = new FlightManager(flight1);
     }
 
     @Test
-    public void canGetPassengerCount() {
-        assertEquals(0, flight1.getPassengersCount());
+    public void canCalculateBaggageWeightPerPassenger(){
+        assertEquals(62.5,  flightManager.CalculateBaggageAllowancePerPassenger(), 0.1);
     }
 
-    @Test
-    public void canGetAvailableSeats() {
-        assertEquals(2, flight1.getAvailableSeats());
-    }
-
-    @Test
-    public void canBookPassenger() {
-        flight1.bookPassenger(passenger1);
-        assertEquals(1, flight1.getPassengersCount());
-    }
-
-    @Test
-    public void cannotBookPassenger() {
-        flight1.bookPassenger(passenger1);
-        flight1.bookPassenger(passenger2);
-        flight1.bookPassenger(passenger3);
-        assertEquals(2, flight1.getPassengersCount());
-    }
-
-    @Test
-    public void cannotBookSamePassenger(){
-        flight1.bookPassenger(passenger1);
-        flight1.bookPassenger(passenger1);
-        assertEquals(1, flight1.getPassengersCount());
-    }
+    
 
 }

@@ -98,7 +98,7 @@ public class Flight {
     }
 
     public void bookPassenger(Passenger passenger) {
-        if (this.getAvailableSeats() > 0) {
+        if (this.getAvailableSeats() > 0 && !this.passengers.contains(passenger)) {
             this.passengers.add(passenger);
         }
     }
