@@ -15,13 +15,77 @@ public class Flight {
     private String departureTime;
 
     public Flight(Pilot pilot,
-                  ArrayList<CabinCrewMember> crew,
-                  ArrayList<Passenger> passengers,
                   Plane plane,
                   String flightNumber,
                   String destination,
                   String departAirport,
                   String departureTime){
-        
+
+        this.pilot =  pilot;
+        this.plane = plane;
+        this.flightNumber =flightNumber;
+        this.destination = destination;
+        this.departAirport = departAirport;
+        this.departureTime = departureTime;
+        this.crew = new ArrayList<>();
+        this.passengers = new ArrayList<>();
     }
+
+    public Pilot getPilot() {
+        return pilot;
+    }
+
+    public void setPilot(Pilot pilot) {
+        this.pilot = pilot;
+    }
+
+    public Plane getPlane() {
+        return plane;
+    }
+
+    public void setPlane(Plane plane) {
+        this.plane = plane;
+    }
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public String getDepartAirport() {
+        return departAirport;
+    }
+
+    public void setDepartAirport(String departAirport) {
+        this.departAirport = departAirport;
+    }
+
+    public String getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public ArrayList<CabinCrewMember> getCrew() {
+        return crew;
+    }
+
+    public ArrayList<Passenger> getPassengers() {
+        return passengers;
+    }
+
+
 }
