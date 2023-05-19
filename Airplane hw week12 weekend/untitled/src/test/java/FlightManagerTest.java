@@ -38,14 +38,23 @@ public class FlightManagerTest {
                 "EDI",
                 "CDG",
                 "12:00");
+        flight1.bookPassenger(passenger1);
+        flight1.bookPassenger(passenger3);
         flightManager = new FlightManager(flight1);
     }
 
     @Test
     public void canCalculateBaggageWeightPerPassenger(){
-        assertEquals(62.5,  flightManager.CalculateBaggageAllowancePerPassenger(), 0.1);
+        assertEquals(62.5, flightManager.CalculateBaggageAllowancePerPassenger(), 0.1);
     }
 
-    
+    @Test
+    public void canCalculateTotalBaggageWeight() {
+        assertEquals(40, flightManager.CalculateTotalBaggageWeight());
+    }
 
+    @Test
+    public void canFindRemainingBaggageAllowance() {
+        assertEquals(85, flightManager.FindRemainingBaggageAllowance());
+    }
 }
