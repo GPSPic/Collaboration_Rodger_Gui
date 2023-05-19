@@ -9,4 +9,17 @@ public class CabinCrewMember {
         this.name = name;
         this.rank = rank;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Rank getRank() {
+        return rank;
+    }
+
+    public void relayMessage(String message){
+        System.out.println(message);
+    }
+
 }
