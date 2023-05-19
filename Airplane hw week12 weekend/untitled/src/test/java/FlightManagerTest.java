@@ -4,6 +4,8 @@ import crew.Rank;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Calendar;
+
 import static org.junit.Assert.assertEquals;
 
 public class FlightManagerTest {
@@ -18,6 +20,8 @@ public class FlightManagerTest {
     CabinCrewMember flightAttendant2;
     CabinCrewMember firstOfficer;
     Pilot pilot;
+    Calendar departureTime;
+
 
 
     @Before
@@ -32,12 +36,18 @@ public class FlightManagerTest {
 //        ArrayList<CabinCrewMember> cabinCrewMembers = new ArrayList<>();
 //        cabinCrewMembers.add(flightAttendant1);
 //        cabinCrewMembers.add(pilot);
+        departureTime = Calendar.getInstance();
+        departureTime.set(Calendar.YEAR, 2023);
+        departureTime.set(Calendar.MONTH, Calendar.MAY);
+        departureTime.set(Calendar.DAY_OF_MONTH, 19);
+        departureTime.set(Calendar.HOUR_OF_DAY, 9);
+        departureTime.set(Calendar.MINUTE, 30);
         flight1 = new Flight(pilot,
                 learjet,
                 "FR42",
                 "EDI",
                 "CDG",
-                "12:00");
+                departureTime);
         flight1.bookPassenger(passenger1);
         flight1.bookPassenger(passenger3);
         flightManager = new FlightManager(flight1);

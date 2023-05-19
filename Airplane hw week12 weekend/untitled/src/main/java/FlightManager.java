@@ -25,4 +25,6 @@ public class FlightManager {
         int baggageWeightAllowance = this.flight.getPlane().getType().getWeight() / 2;
         return baggageWeightAllowance - this.CalculateTotalBaggageWeight();
     }
+
+
 }

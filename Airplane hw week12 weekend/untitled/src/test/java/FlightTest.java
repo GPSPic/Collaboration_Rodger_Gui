@@ -35,11 +35,7 @@ public class FlightTest {
 //        cabinCrewMembers.add(flightAttendant1);
 //        cabinCrewMembers.add(pilot);
         departureTime = Calendar.getInstance();
-        departureTime.set(Calendar.YEAR, 2023);
-        departureTime.set(Calendar.MONTH, Calendar.MAY);
-        departureTime.set(Calendar.DAY_OF_MONTH, 19);
-        departureTime.set(Calendar.HOUR_OF_DAY, 9);
-        departureTime.set(Calendar.MINUTE, 30);
+        departureTime.set(2023, Calendar.MAY, 20, 14, 0);
         flight1 = new Flight(pilot,
                 learjet,
                 "FR42",
@@ -77,6 +73,15 @@ public class FlightTest {
         flight1.bookPassenger(passenger1);
         flight1.bookPassenger(passenger1);
         assertEquals(1, flight1.getPassengersCount());
+    }
+
+    @Test
+    public void canGetDepartureTime() {
+        assertEquals(2023, flight1.getDepartureTime().get(Calendar.YEAR));
+        assertEquals(4, flight1.getDepartureTime().get(Calendar.MONTH));
+        assertEquals(20, flight1.getDepartureTime().get(Calendar.DATE));
+        assertEquals(14, flight1.getDepartureTime().get(Calendar.HOUR_OF_DAY));
+        assertEquals(0, flight1.getDepartureTime().get(Calendar.MINUTE));
     }
 
 }
