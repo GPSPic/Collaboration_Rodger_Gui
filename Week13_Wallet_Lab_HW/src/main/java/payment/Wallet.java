@@ -29,4 +29,8 @@ public class Wallet {
     public void addCardsToWallet(Chargeable chargeable){
         this.chargeables.add(chargeable);
     }
+
+    public void pay(double price, Chargeable chargeable) {
+        chargeable.charge(price);
+    }
 }
