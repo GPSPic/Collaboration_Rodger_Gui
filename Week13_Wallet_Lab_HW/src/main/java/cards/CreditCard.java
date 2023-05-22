@@ -2,17 +2,14 @@ package cards;
 
 import payment.Chargeable;
 
-import java.util.ArrayList;
 
 public class CreditCard extends PaymentCard implements Chargeable {
 
     private double availableCredit;
-//    private ArrayList<String> transactions;
 
     public CreditCard(int cardNumber, String expiryDate, int securityNo, double availableCredit){
         super(cardNumber, expiryDate, securityNo);
         this.availableCredit = availableCredit;
-//        this.transactions = new ArrayList<>();
     }
 
     public double getAvailableCredit() {

@@ -25,4 +25,8 @@ public class Wallet {
             this.selectedChargeable = chargeable;
         }
     }
+
+    public void addCardsToWallet(Chargeable chargeable){
+        this.chargeables.add(chargeable);
+    }
 }
