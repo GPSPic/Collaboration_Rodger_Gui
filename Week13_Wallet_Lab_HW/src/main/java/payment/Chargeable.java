@@ -2,5 +2,5 @@ package payment;
 
 public interface Chargeable {
 
-    void charge();
+    void charge(double transactionAmount);
 }
