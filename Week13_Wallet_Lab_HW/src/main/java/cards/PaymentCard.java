@@ -9,7 +9,7 @@ public abstract class PaymentCard {
     private int securityNo;
     private ArrayList<String> transactions;
 
-    public  PaymentCard(int cardNumber, String expiryDate, int securityNo){
+    public PaymentCard(int cardNumber, String expiryDate, int securityNo) {
         this.cardNumber = cardNumber;
         this.expiryDate = expiryDate;
         this.securityNo = securityNo;
@@ -32,7 +32,7 @@ public abstract class PaymentCard {
         return transactions;
     }
 
-    public void logTransaction(String transaction){
+    public void logTransaction(String transaction) {
         this.transactions.add(transaction);
     }
 
