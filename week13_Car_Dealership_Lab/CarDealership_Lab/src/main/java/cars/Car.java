@@ -10,10 +10,11 @@ public abstract class Car {
     private double price;
     private double damageValue;
 
-    public Car(String make, ArrayList<Engine> engines, double price){
+    public Car(String make, double price){
         this.make = make;
         this.price = price;
         this.damageValue = 0;
+        this.engines = new ArrayList<>();
     }
 
     public String getMake() {
