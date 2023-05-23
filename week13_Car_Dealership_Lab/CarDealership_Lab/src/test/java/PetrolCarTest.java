@@ -13,8 +13,8 @@ public class PetrolCarTest {
     public void hasPetrolEngine(){
         petrolEngine = new PetrolEngine();
         petrolCar = new PetrolCar("Guimobile", 10.01);
-        System.out.println(petrolCar.getEngines());
-//        assertEquals(petrolEngine, petrolCar.getEngines());
+        assertEquals(petrolEngine.getFuel(), petrolCar.getEngines().get(0).getFuel());
+        assertEquals(1, petrolCar.getEngines().size());
     }
 
 }

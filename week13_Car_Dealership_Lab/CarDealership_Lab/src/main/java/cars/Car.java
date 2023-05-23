@@ -46,4 +46,8 @@ public abstract class Car {
         this.price += this.damageValue;
         this.setDamageValue(0);
     }
+
+    public void addEngine(Engine engine){
+        this.engines.add(engine);
+    }
 }
