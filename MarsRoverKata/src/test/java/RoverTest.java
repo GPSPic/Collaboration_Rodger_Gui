@@ -1,3 +1,5 @@
+import enums.DirectionEnum;
+import models.Rover;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -6,11 +8,16 @@ public class RoverTest {
 
     private Rover curiosity;
     private Rover insight;
+    private Rover opportunity;
+    private Rover perseverance;
 
     @Before
     public void before(){
-        curiosity = new Rover(1,1, "N");
-        insight = new Rover(1,1, "S");
+        curiosity = new Rover(1,1, DirectionEnum.NORTH);
+        insight = new Rover(1,1, DirectionEnum.SOUTH);
+        opportunity = new Rover(1,1, DirectionEnum.EAST);
+        perseverance = new Rover(1,1, DirectionEnum.WEST);
+
     }
 
     @Test
@@ -26,11 +33,33 @@ public class RoverTest {
     public void canMoveSouth(){
         assertEquals(1, insight.getyPosition());
         assertEquals(1, insight.getxPosition());
-        System.out.println(insight.getyPosition());
         insight.move();
         assertEquals(0, insight.getyPosition());
         assertEquals(1, insight.getxPosition());
     }
 
+    @Test
+    public void canMoveEast(){
+        assertEquals(1, opportunity.getyPosition());
+        assertEquals(1, opportunity.getxPosition());
+        opportunity.move();
+        assertEquals(1, opportunity.getyPosition());
+        assertEquals(2, opportunity.getxPosition());
+    }
 
+    @Test
+    public void canMoveWest(){
+        assertEquals(1, perseverance.getyPosition());
+        assertEquals(1, perseverance.getxPosition());
+        perseverance.move();
+        assertEquals(1, perseverance.getyPosition());
+        assertEquals(0, perseverance.getxPosition());
+    }
+
+    @Test
+    public void canRotateLeft() {
+        assertEquals(180, insight.getDirection().getAngle());
+        insight.rotateLeft();
+        assertEquals(90, insight.getDirection().getAngle());
+    }
 }
