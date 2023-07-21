@@ -60,38 +60,45 @@ public class Rover {
         }
     }
 
-    public void rotateLeft (String rotateLCommand) {
-        
-
-
-        DirectionEnum newDirection;
-
-
-
-        this.setDirection(newDirection);
+    public void rotateLeft () {
+        int currentDirectionAngle = this.getDirection().getAngle();
+        int newDirectionAngle = currentDirectionAngle - 90;        
+        DirectionEnum newDirection = null;
+        switch (newDirectionAngle){
+            case 0:
+                newDirection = DirectionEnum.NORTH;
+                break;
+            case 90:
+                newDirection = DirectionEnum.EAST;
+                break;
+            case 180:
+                newDirection = DirectionEnum.SOUTH;
+                break;
+            case -90:
+                newDirection = DirectionEnum.WEST;
+                break;
+        }
+    this.setDirection(newDirection);
     }
 
-//    public void rotateLeft (String rotateDirectionCommand) {
-//        int currentDirectionAngle = this.getDirection().getAngle();
-//
-//        if (rotateDirectionCommand.equals("L")) {
-////            LeftRightEnum rotateLeft = LeftRightEnum.LEFT;
-//            int rotationAngle = LeftRightEnum.LEFT.getAddedAngle();
-//        } else if (rotateDirectionCommand.equals("R")) {
-////            LeftRightEnum rotateRight = LeftRightEnum.RIGHT;
-//        } else {
-//            System.out.println("Error, there is no rotation possible to" + rotateDirectionCommand);
-//        }
-
-
-
-//        int rotationAngle = rotateDirection
-//        DirectionEnum newDirection;
-//
-//        switch (currentAngle) {
-//
-//        }
-
-//        this.setDirection(DirectionEnum newDirection);
-//    }
+    public void rotateRight () {
+        int currentDirectionAngle = this.getDirection().getAngle();
+        int newDirectionAngle = currentDirectionAngle + 90;
+        DirectionEnum newDirection = null;
+        switch (newDirectionAngle){
+            case 360:
+                newDirection = DirectionEnum.NORTH;
+                break;
+            case 90:
+                newDirection = DirectionEnum.EAST;
+                break;
+            case 180:
+                newDirection = DirectionEnum.SOUTH;
+                break;
+            case 270:
+                newDirection = DirectionEnum.WEST;
+                break;
+        }
+        this.setDirection(newDirection);
+    }
 }

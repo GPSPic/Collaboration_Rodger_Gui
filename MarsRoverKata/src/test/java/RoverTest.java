@@ -61,5 +61,20 @@ public class RoverTest {
         assertEquals(180, insight.getDirection().getAngle());
         insight.rotateLeft();
         assertEquals(90, insight.getDirection().getAngle());
+
+        assertEquals(0, curiosity.getDirection().getAngle());
+        curiosity.rotateLeft();
+        assertEquals(270, curiosity.getDirection().getAngle());
+    }
+
+    @Test
+    public void canRotateRight() {
+        assertEquals(180, insight.getDirection().getAngle());
+        insight.rotateRight();
+        assertEquals(270, insight.getDirection().getAngle());
+
+        assertEquals(270, perseverance.getDirection().getAngle());
+        perseverance.rotateRight();
+        assertEquals(0, perseverance.getDirection().getAngle());
     }
 }
