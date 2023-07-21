@@ -27,7 +27,7 @@ public class RoverTest {
         assertEquals(1, insight.getyPosition());
         assertEquals(1, insight.getxPosition());
         System.out.println(insight.getyPosition());
-        curiosity.move();
+        insight.move();
         assertEquals(0, insight.getyPosition());
         assertEquals(1, insight.getxPosition());
     }
