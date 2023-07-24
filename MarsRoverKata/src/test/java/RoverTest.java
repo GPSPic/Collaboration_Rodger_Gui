@@ -90,13 +90,41 @@ public class RoverTest {
 
     @Test
     public void canPlaceRover() {
-        ArrayList<String> command = new ArrayList<>();
-        command.add("1");
-        command.add("1");
-        command.add("N");
-        spirit.placeAt(command);
+        ArrayList<String> placeCommand = new ArrayList<>();
+        placeCommand.add("1");
+        placeCommand.add("1");
+        placeCommand.add("N");
+        spirit.placeAt(placeCommand);
         assertEquals(1, spirit.getxPosition());
         assertEquals(1, spirit.getyPosition());
         assertEquals("N", spirit.getDirection().getCardinalDirection());
     }
+
+    @Test
+    public void canFollowProcessMovementCommand(){
+        ArrayList<String> movementCommand = new ArrayList<>();
+        movementCommand.add("R");
+        movementCommand.add("M");
+        movementCommand.add("M");
+        curiosity.processMovementCommand(movementCommand);
+        assertEquals(3, curiosity.getxPosition());
+        assertEquals(1, curiosity.getyPosition());
+        assertEquals("E", curiosity.getDirection().getCardinalDirection());
+    }
+
+    @Test
+    public void canFollowProcessCommand(){
+        ArrayList<String> fullRoverCommand = new ArrayList<>();
+        fullRoverCommand.add("1");
+        fullRoverCommand.add("1");
+        fullRoverCommand.add("N");
+        fullRoverCommand.add("R");
+        fullRoverCommand.add("M");
+        fullRoverCommand.add("M");
+        spirit.processCommand(fullRoverCommand);
+        assertEquals(3,spirit.getxPosition());
+        assertEquals(1,spirit.getyPosition());
+        assertEquals("E", spirit.getDirection().getCardinalDirection());
+    }
+
 }

@@ -41,6 +41,14 @@ public class Rover {
         this.direction = direction;
     }
 
+    public void placeAt (ArrayList<String> placementCommand) {
+        int xPositionCommand = Integer.parseInt(placementCommand.get(0));
+        this.setxPosition(xPositionCommand);
+        int yPositionCommand = Integer.parseInt(placementCommand.get(1));
+        this.setyPosition(yPositionCommand);
+        this.processDirectionCommand(placementCommand.get(2));
+    }
+
     public void move() {
         String currentDirection = this.getDirection().getCardinalDirection();
         if (currentDirection == null) {
@@ -124,11 +132,21 @@ public class Rover {
         this.setDirection(directionCommandAsEnum);
     }
 
-    public void placeAt (ArrayList<String> placementCommand) {
-        int xPositionCommand = Integer.parseInt(placementCommand.get(0));
-        this.setxPosition(xPositionCommand);
-        int yPositionCommand = Integer.parseInt(placementCommand.get(1));
-        this.setyPosition(yPositionCommand);
-        this.processDirectionCommand(placementCommand.get(2));
+    public void processMovementCommand(ArrayList<String> movementCommand) {
+        while (movementCommand.size() > 0){
+            switch (movementCommand.get(0)){
+                case "L":
+                    this.rotateLeft();
+                    break;
+                case "R":
+                    this.rotateRight();
+                    break;
+                case "M":
+                    this.move();
+                    break;
+            }
+            movementCommand.remove(0);
+        }
     }
+
 }
