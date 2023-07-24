@@ -2,6 +2,9 @@ import models.Command;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
+
 public class CommandTest {
 
     private Command command1;
@@ -16,8 +19,14 @@ public class CommandTest {
     }
 
     @Test
-    public void canProcessCommand(){
-
+    public void canSortCommand() {
+        command1.sortCommand();
+        assertEquals(3, command1.getSortedCommands().size());
     }
+
+//    @Test
+//    public void canProcessCommand(){
+//
+//    }
 
 }
