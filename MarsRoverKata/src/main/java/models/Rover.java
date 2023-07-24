@@ -4,6 +4,7 @@ import enums.DirectionEnum;
 import enums.LeftRightEnum;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Rover {
 
@@ -41,7 +42,7 @@ public class Rover {
         this.direction = direction;
     }
 
-    public void placeAt (ArrayList<String> placementCommand) {
+    public void placeAt (List<String> placementCommand) {
         int xPositionCommand = Integer.parseInt(placementCommand.get(0));
         this.setxPosition(xPositionCommand);
         int yPositionCommand = Integer.parseInt(placementCommand.get(1));
@@ -132,7 +133,7 @@ public class Rover {
         this.setDirection(directionCommandAsEnum);
     }
 
-    public void processMovementCommand(ArrayList<String> movementCommand) {
+    public void processMovementCommand(List<String> movementCommand) {
         while (movementCommand.size() > 0){
             switch (movementCommand.get(0)){
                 case "L":
@@ -147,6 +148,14 @@ public class Rover {
             }
             movementCommand.remove(0);
         }
+    }
+
+    public void processCommand(ArrayList<String> fullRoverCommand) {
+        List<String> placementCommand = fullRoverCommand.subList(0,3);
+        int lastCommandIndex = fullRoverCommand.size();
+        List<String> movementCommand = fullRoverCommand.subList(3, lastCommandIndex);
+        this.placeAt(placementCommand);
+        this.processMovementCommand(movementCommand);
     }
 
 }

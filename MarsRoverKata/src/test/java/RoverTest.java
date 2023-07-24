@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -90,7 +91,7 @@ public class RoverTest {
 
     @Test
     public void canPlaceRover() {
-        ArrayList<String> placeCommand = new ArrayList<>();
+        List<String> placeCommand = new ArrayList<>();
         placeCommand.add("1");
         placeCommand.add("1");
         placeCommand.add("N");
@@ -102,7 +103,7 @@ public class RoverTest {
 
     @Test
     public void canFollowProcessMovementCommand(){
-        ArrayList<String> movementCommand = new ArrayList<>();
+        List<String> movementCommand = new ArrayList<>();
         movementCommand.add("R");
         movementCommand.add("M");
         movementCommand.add("M");
