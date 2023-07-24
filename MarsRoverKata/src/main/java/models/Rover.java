@@ -3,6 +3,8 @@ package models;
 import enums.DirectionEnum;
 import enums.LeftRightEnum;
 
+import java.util.ArrayList;
+
 public class Rover {
 
     private int xPosition;
@@ -100,5 +102,33 @@ public class Rover {
                 break;
         }
         this.setDirection(newDirection);
+    }
+
+    public void processDirectionCommand (String directionCommandAsString) {
+        DirectionEnum directionCommandAsEnum = null;
+
+        switch (directionCommandAsString) {
+            case "N":
+                directionCommandAsEnum = DirectionEnum.NORTH;
+                break;
+            case "E":
+                directionCommandAsEnum = DirectionEnum.EAST;
+                break;
+            case "S":
+                directionCommandAsEnum = DirectionEnum.SOUTH;
+                break;
+            case "W":
+                directionCommandAsEnum = DirectionEnum.WEST;
+                break;
+        }
+        this.setDirection(directionCommandAsEnum);
+    }
+
+    public void placeAt (ArrayList<String> placementCommand) {
+        int xPositionCommand = Integer.parseInt(placementCommand.get(0));
+        this.setxPosition(xPositionCommand);
+        int yPositionCommand = Integer.parseInt(placementCommand.get(1));
+        this.setyPosition(yPositionCommand);
+        this.processDirectionCommand(placementCommand.get(2));
     }
 }

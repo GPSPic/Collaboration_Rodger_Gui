@@ -2,6 +2,9 @@ import enums.DirectionEnum;
 import models.Rover;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class RoverTest {
@@ -10,6 +13,7 @@ public class RoverTest {
     private Rover insight;
     private Rover opportunity;
     private Rover perseverance;
+    private Rover spirit;
 
     @Before
     public void before(){
@@ -17,7 +21,7 @@ public class RoverTest {
         insight = new Rover(1,1, DirectionEnum.SOUTH);
         opportunity = new Rover(1,1, DirectionEnum.EAST);
         perseverance = new Rover(1,1, DirectionEnum.WEST);
-
+        spirit = new Rover(-1, -1, null);
     }
 
     @Test
@@ -76,5 +80,23 @@ public class RoverTest {
         assertEquals(270, perseverance.getDirection().getAngle());
         perseverance.rotateRight();
         assertEquals(0, perseverance.getDirection().getAngle());
+    }
+
+    @Test
+    public void canProcessDirectionCommandString() {
+        spirit.processDirectionCommand("N");
+        assertEquals("N", spirit.getDirection().getCardinalDirection());
+    }
+
+    @Test
+    public void canPlaceRover() {
+        ArrayList<String> command = new ArrayList<>();
+        command.add("1");
+        command.add("1");
+        command.add("N");
+        spirit.placeAt(command);
+        assertEquals(1, spirit.getxPosition());
+        assertEquals(1, spirit.getyPosition());
+        assertEquals("N", spirit.getDirection().getCardinalDirection());
     }
 }
