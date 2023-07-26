@@ -88,22 +88,30 @@ public class Command {
         List<List<String>> roversCommand = new ArrayList<>();
         List<String> spreadRoversCommand = commandsAsList.subList(2, commandsAsList.size());
 
-        for (int i = 2; i < spreadRoversCommand.size(); i++) {
+        int spreadRoverCommandSize = spreadRoversCommand.size();
+//        [1, 2, N, L, M, L, M, L, M, L, M, M, 3, 3, E, M, M, R, M, M, R, M, R, R, M]
+//        [[1, 2, N, L, M, L, M, L, M, L, M, M], [3, 3, E, M, M, R, M, M, R, M, R, R, M]]
+        for (int i = 0;
+             i < spreadRoverCommandSize;
+             i++) {
             if (this.directionFinder(spreadRoversCommand.get(i))) {
                 int commandStart = i - 2;
-                for (int j = i + 1; j < spreadRoversCommand.size(); j++) {
+                List<String> tempListToFindCommandEnd = spreadRoversCommand.subList(i+1, spreadRoverCommandSize);
+
+                int commandEnd = -1;
+
+                for (int j = 0; j < tempListToFindCommandEnd.size(); j++)
                     try {
                         Integer.parseInt(spreadRoversCommand.get(j));
-                        int commandEnd = j;
-                        List<String> individualRoverCommand = spreadRoversCommand.subList(commandStart, commandEnd);
-                        roversCommand.add(individualRoverCommand);
-                    }
-                    catch (NumberFormatException nfe) {
-                        System.out.println("Attempt number: " + Integer.toString(j));
-                    }
+                        commandEnd = j + 3;
+                        break;
+                    } catch (NumberFormatException nfe) {
+//                        System.out.println("Not that one!");
                 }
+                List<String> individualRoverCommand = spreadRoversCommand.subList(commandStart, commandEnd);
+                roversCommand.add(individualRoverCommand);
             }
-
+//                List<String> individualRoverCommand = spreadRoversCommand.subList(i - 2, spreadRoverCommandSize);
         }
         this.setRoverCommands(roversCommand);
     }
