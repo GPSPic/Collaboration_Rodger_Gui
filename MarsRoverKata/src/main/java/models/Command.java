@@ -8,7 +8,7 @@ public class Command {
 
     private String commandLine;
     private List<String> sortedCommands;
-    private List<String> plateauCommand;
+    private List<Integer> plateauCommand;
     private List<List<String>> roverCommands;
 
     public Command(String commandLine) {
@@ -34,11 +34,11 @@ public class Command {
         this.sortedCommands = sortedCommands;
     }
 
-    public List<String> getPlateauCommand() {
+    public List<Integer> getPlateauCommand() {
         return plateauCommand;
     }
 
-    public void setPlateauCommand(List<String> plateauCommand) {
+    public void setPlateauCommand(List<Integer> plateauCommand) {
         this.plateauCommand = plateauCommand;
     }
 
@@ -58,26 +58,16 @@ public class Command {
         this.roverCommands.add(allCommands);
     }
 
-//    public void sortCommand() {
-//        String noSpaceCommand = this.commandLine.replaceAll("[ ]+", "");
-//        String[] commandsAsArrays = noSpaceCommand.split("\\n+");
-//        List<String> commandsAsList = Arrays.asList(commandsAsArrays);
-//        this.setSortedCommands(commandsAsList);
-//        int listSize = commandsAsList.size();
-//        for (int i = 0; i < listSize; i++) {
-//            this.sortedCommands.add(commandsAsList.get(i));
+
+//    public boolean directionFinder(String str) {
+//        if (
+//            str.matches("N|E|S|W")
+//        ) {
+//            return true;
+//        } else {
+//            return false;
 //        }
 //    }
-
-    public boolean directionFinder(String str) {
-        if (
-            str.matches("N|E|S|W")
-        ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
 
     public void sortCommand() {
@@ -87,7 +77,12 @@ public class Command {
         List<String> commandsAsList = Arrays.asList(commandsAsArrays);
 
         List<String> parsedPlateauCommand = commandsAsList.subList(0, 2);
-        this.setPlateauCommand(parsedPlateauCommand);
+        int xLength = Integer.parseInt(parsedPlateauCommand.get(0));
+        int yLength = Integer.parseInt(parsedPlateauCommand.get(1));
+        List<Integer> plateauCommandasIntegers = new ArrayList<>();
+        plateauCommandasIntegers.add(xLength);
+        plateauCommandasIntegers.add(yLength);
+        this.setPlateauCommand(plateauCommandasIntegers);
 
         List<List<String>> roversCommand = new ArrayList<>();
         List<String> spreadRoversCommand = commandsAsList.subList(2, commandsAsList.size());

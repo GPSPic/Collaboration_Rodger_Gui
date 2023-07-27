@@ -74,15 +74,15 @@ public class CommandTest {
         assertEquals(testRoversCommandsList, commandGoal.getRoverCommands());
     }
 
-    @Test
-    public void canFindDirection(){
-        assertTrue(command1.directionFinder("N"));
-        assertTrue(command1.directionFinder("E"));
-        assertTrue(command1.directionFinder("S"));
-        assertTrue(command1.directionFinder("W"));
-        assertFalse(command1.directionFinder("n"));
-        assertFalse(command1.directionFinder("F"));
-        assertFalse(command1.directionFinder("NE"));
-    }
+//    @Test
+//    public void canFindDirection(){
+//        assertTrue(command1.directionFinder("N"));
+//        assertTrue(command1.directionFinder("E"));
+//        assertTrue(command1.directionFinder("S"));
+//        assertTrue(command1.directionFinder("W"));
+//        assertFalse(command1.directionFinder("n"));
+//        assertFalse(command1.directionFinder("F"));
+//        assertFalse(command1.directionFinder("NE"));
+//    }
 
 }
