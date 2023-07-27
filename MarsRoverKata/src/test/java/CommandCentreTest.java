@@ -41,23 +41,22 @@ public class CommandCentreTest {
         opportunity = new Rover(1,1, DirectionEnum.EAST);
         perseverance = new Rover(-1,-1, null);
         spirit = new Rover(-1, -1, null);
-        plateau = new Plateau(-1,-1);
 
-        commandCentre = new CommandCentre("CapeCarnival", plateau, commandGoal);
+        commandCentre = new CommandCentre("CapeCarnival");
         commandCentre.addRover(spirit);
         commandCentre.addRover(perseverance);
     }
 
     @Test
     public void canSetPlateauSize(){
-        commandCentre.setPlateauSize();
+        commandCentre.setPlateauSize(commandGoal);
         assertEquals(5, commandCentre.getPlateau().getxLength());
         assertEquals(5, commandCentre.getPlateau().getyLength());
     }
 
     @Test
     public void canCommandRovers(){
-        commandCentre.commandRovers();
+        commandCentre.commandRovers(commandGoal);
         assertEquals(1, spirit.getxPosition());
         assertEquals(3, spirit.getyPosition());
         assertEquals("N", spirit.getDirection().getCardinalDirection());
@@ -66,4 +65,12 @@ public class CommandCentreTest {
         assertEquals(1, perseverance.getyPosition());
         assertEquals("E", perseverance.getDirection().getCardinalDirection());
     }
+
+    @Test
+    public void canProcessInput(){
+        commandCentre.processInput(commandGoal);
+       
+
+    }
+
 }

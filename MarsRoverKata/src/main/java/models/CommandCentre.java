@@ -8,14 +8,11 @@ public class CommandCentre {
     private String name;
     private Plateau plateau;
     private List<Rover> rovers;
-    private Command command;
     private List<String> output;
 
-    public CommandCentre(String name, Plateau plateau, Command command) {
+    public CommandCentre(String name) {
         this.name = name;
-        this.plateau = plateau;
         this.rovers = new ArrayList<>();
-        this.command = command;
     }
 
     public String getName() {
@@ -42,14 +39,6 @@ public class CommandCentre {
         this.rovers = rovers;
     }
 
-    public Command getCommand() {
-        return command;
-    }
-
-    public void setCommand(Command command) {
-        this.command = command;
-    }
-
     public List<String> getOutput() {
         return output;
     }
@@ -58,24 +47,34 @@ public class CommandCentre {
         this.output = output;
     }
 
-    public void getSortedCommand(){
-        this.getCommand().sortCommand();
+    public List<Integer> getPlateauCommand (Command command){
+        command.sortCommand();
+        return command.getPlateauCommand();
     }
 
-    public void setPlateauSize(){
-        this.getSortedCommand();
-        this.plateau.setxLength(this.getCommand().getPlateauCommand().get(0));
-        this.plateau.setyLength(this.getCommand().getPlateauCommand().get(1));
+    public List<List<String>> getRoversCommand (Command command){
+        command.sortCommand();
+        return command.getRoverCommands();
+    }
+
+    public void setPlateauSize(Command command){
+        List<Integer> plateauDimensions = this.getPlateauCommand(command);
+        int xLength = plateauDimensions.get(0);
+        int yLength = plateauDimensions.get(1);
+        this.plateau = new Plateau(xLength, yLength);
     }
 
     public void addRover(Rover rover){
         this.rovers.add(rover);
     }
 
-    public void commandRovers(){
-        this.getSortedCommand();
+    public void commandRovers(Command command){
+        List<List<String>> allRoverCommands = this.getRoversCommand(command);
         for (int i = 0; i < this.getRovers().size(); i++){
-            
+            List<String> roverCommandAsString = allRoverCommands.get(i);
+            this.getRovers().get(i).processCommand((ArrayList<String>) roverCommandAsString);
         }
     }
+
+
 }
