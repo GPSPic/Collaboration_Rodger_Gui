@@ -54,6 +54,10 @@ public class Command {
         this.sortedCommands.add(sortedCommand);
     }
 
+    public void addAllcommand(List<String> allCommands) {
+        this.roverCommands.add(allCommands);
+    }
+
 //    public void sortCommand() {
 //        String noSpaceCommand = this.commandLine.replaceAll("[ ]+", "");
 //        String[] commandsAsArrays = noSpaceCommand.split("\\n+");
@@ -87,32 +91,36 @@ public class Command {
 
         List<List<String>> roversCommand = new ArrayList<>();
         List<String> spreadRoversCommand = commandsAsList.subList(2, commandsAsList.size());
-
-        int spreadRoverCommandSize = spreadRoversCommand.size();
+        List<String> currentCommand = new ArrayList<>();
 //        [1, 2, N, L, M, L, M, L, M, L, M, M, 3, 3, E, M, M, R, M, M, R, M, R, R, M]
 //        [[1, 2, N, L, M, L, M, L, M, L, M, M], [3, 3, E, M, M, R, M, M, R, M, R, R, M]]
-        for (int i = 0;
-             i < spreadRoverCommandSize;
-             i++) {
-            if (this.directionFinder(spreadRoversCommand.get(i))) {
-                int commandStart = i - 2;
-                List<String> tempListToFindCommandEnd = spreadRoversCommand.subList(i+1, spreadRoverCommandSize);
 
-                int commandEnd = -1;
+        for (int j = 0; j < spreadRoversCommand.size(); j++) {
+            String commandElement = spreadRoversCommand.get(j);
+            currentCommand.add(commandElement);
+                try {
+                    Integer.parseInt(commandElement);
+                    if (j+2 < spreadRoversCommand.size() && j!=0) {
+                        String nextItem = spreadRoversCommand.get(j + 1);
+                        String thirdItem = spreadRoversCommand.get(j + 2);
+                        try {
+                            Integer.parseInt(nextItem);
+                            if (thirdItem.matches("N|S|E|W")) {
+                                currentCommand.remove(currentCommand.size()-1);
+                                roversCommand.add(currentCommand);
+                                currentCommand = new ArrayList<>();
+                                currentCommand.add(commandElement);
 
-                for (int j = 0; j < tempListToFindCommandEnd.size(); j++)
-                    try {
-                        Integer.parseInt(spreadRoversCommand.get(j));
-                        commandEnd = j + 3;
-                        break;
-                    } catch (NumberFormatException nfe) {
-//                        System.out.println("Not that one!");
-                }
-                List<String> individualRoverCommand = spreadRoversCommand.subList(commandStart, commandEnd);
-                roversCommand.add(individualRoverCommand);
-            }
-//                List<String> individualRoverCommand = spreadRoversCommand.subList(i - 2, spreadRoverCommandSize);
+                            }
+                        } catch (NumberFormatException nfe2) {}
+                    }
+                } catch (NumberFormatException nfe) {}
+        }
+
+        if (!currentCommand.isEmpty()) {
+            roversCommand.add(currentCommand);
         }
         this.setRoverCommands(roversCommand);
     }
 }
+

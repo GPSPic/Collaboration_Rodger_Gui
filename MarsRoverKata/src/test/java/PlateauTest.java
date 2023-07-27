@@ -24,19 +24,8 @@ public class PlateauTest {
         perseverance = new Rover(1,1, DirectionEnum.WEST);
         spirit = new Rover(-1, -1, null);
         plateau = new Plateau(5,5);
-        plateau.addRover(curiosity);
     }
 
-    @Test
-    public void canAddRover(){
-        plateau.addRover(spirit);
-        assertEquals(2, plateau.getRovers().size());
-    }
 
-//    @Test
-//    public void canReceiveCommand(){
-//
-//        plateau.receiveCommand();
-//    }
 
 }

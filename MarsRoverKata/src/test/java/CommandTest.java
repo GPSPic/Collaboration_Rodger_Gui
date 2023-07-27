@@ -2,6 +2,9 @@ import models.Command;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 
@@ -33,9 +36,42 @@ public class CommandTest {
     @Test
     public void canSortCommand() {
         commandGoal.sortCommand();
-//        assertEquals(3, command1.getSortedCommands().size());
-        System.out.println("plateauCommand: " + commandGoal.getPlateauCommand());
-        System.out.println("current rovers command: " + commandGoal.getRoverCommands());
+        List<String> testPlateauSize = new ArrayList<>();
+        testPlateauSize.add("5");
+        testPlateauSize.add("5");
+        assertEquals(testPlateauSize, commandGoal.getPlateauCommand());
+        List<List<String>> testRoversCommandsList = new ArrayList<>();
+        List<String> rover1TestCommand = new ArrayList<>();
+        List<String> rover2TestCommand = new ArrayList<>();
+        rover1TestCommand.add("1");
+        rover1TestCommand.add("2");
+        rover1TestCommand.add("N");
+        rover1TestCommand.add("L");
+        rover1TestCommand.add("M");
+        rover1TestCommand.add("L");
+        rover1TestCommand.add("M");
+        rover1TestCommand.add("L");
+        rover1TestCommand.add("M");
+        rover1TestCommand.add("L");
+        rover1TestCommand.add("M");
+        rover1TestCommand.add("M");
+//        [[1, 2, N, L, M, L, M, L, M, L, M, M], [3, 3, E, M, M, R, M, M, R, M, R, R, M]]
+        rover2TestCommand.add("3");
+        rover2TestCommand.add("3");
+        rover2TestCommand.add("E");
+        rover2TestCommand.add("M");
+        rover2TestCommand.add("M");
+        rover2TestCommand.add("R");
+        rover2TestCommand.add("M");
+        rover2TestCommand.add("M");
+        rover2TestCommand.add("R");
+        rover2TestCommand.add("M");
+        rover2TestCommand.add("R");
+        rover2TestCommand.add("R");
+        rover2TestCommand.add("M");
+        testRoversCommandsList.add(rover1TestCommand);
+        testRoversCommandsList.add(rover2TestCommand);
+        assertEquals(testRoversCommandsList, commandGoal.getRoverCommands());
     }
 
     @Test

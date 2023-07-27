@@ -10,7 +10,6 @@ public class Plateau {
     public Plateau(int xLength, int yLength) {
         this.xLength = xLength;
         this.yLength = yLength;
-        this.rovers = new ArrayList<>();
     }
 
     public int getxLength() {
@@ -28,19 +27,4 @@ public class Plateau {
     public void setyLength(int yLength) {
         this.yLength = yLength;
     }
-
-    public ArrayList<Rover> getRovers() {
-        return rovers;
-    }
-
-    public void setRovers(ArrayList<Rover> rovers) {
-        this.rovers = rovers;
-    }
-
-    public void addRover(Rover rover){
-        this.rovers.add(rover);
-    }
-
-
-
 }
