@@ -49,14 +49,16 @@ public class CommandCentreTest {
 
     @Test
     public void canSetPlateauSize(){
-        commandCentre.setPlateauSize(commandGoal);
+        commandCentre.assignCommandProperties(commandGoal);
+        commandCentre.setPlateauSize();
         assertEquals(5, commandCentre.getPlateau().getxLength());
         assertEquals(5, commandCentre.getPlateau().getyLength());
     }
 
     @Test
     public void canCommandRovers(){
-        commandCentre.commandRovers(commandGoal);
+        commandCentre.assignCommandProperties(commandGoal);
+        commandCentre.commandRovers();
         assertEquals(1, spirit.getxPosition());
         assertEquals(3, spirit.getyPosition());
         assertEquals("N", spirit.getDirection().getCardinalDirection());
@@ -69,7 +71,16 @@ public class CommandCentreTest {
     @Test
     public void canProcessInput(){
         commandCentre.processInput(commandGoal);
-       
+        List<String> outputExpected = new ArrayList<>();
+        outputExpected.add("1");
+        outputExpected.add("3");
+        outputExpected.add("N");
+        outputExpected.add("5");
+        outputExpected.add("1");
+        outputExpected.add("E");
+        System.out.println("raw output: " + commandCentre.getOutput());
+        System.out.println("output as String: " + commandCentre.getOutputAsString());
+        assertEquals(outputExpected, commandCentre.getOutput());
 
     }
 
